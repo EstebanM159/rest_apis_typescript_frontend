@@ -1,6 +1,4 @@
-import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import Spinner from '../components/Spinner'
 export default function Layout () {
   return (
     <>
@@ -12,9 +10,7 @@ export default function Layout () {
           </div>
         </header>
         <main className='mt-10 mx-auto max-w-6xl p-10 bg-white shadow'>
-          <Suspense fallback={<Spinner/>}>
             <Outlet/>
-          </Suspense>
         </main>
     </>
   )
