@@ -5,7 +5,10 @@ import NewProduct, { action as newProductAction } from './pages/NewProduct'
 import EditProduct, { loader as editProductLoader, action as editProductAction } from './pages/EditProduct'
 import { action as deleteProductAction } from './components/ProductDetails'
 import Spinner from './components/Spinner'
-const Products = lazy(async () => await import('./pages/Products'))
+const Products = lazy(async () => {
+  await new Promise(resolve => setTimeout(resolve, 500)) // 1000ms de retraso
+  return import('./pages/Products')
+})
 const Layout = lazy(async () => await import('./layouts/Layout'))
 export const router = createBrowserRouter([
   {
