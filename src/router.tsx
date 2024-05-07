@@ -1,17 +1,20 @@
+import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import Layout from './layouts/Layout'
-import Products, { loader as productsLoader, action as updateAvailabilityAction } from './pages/Products'
+import { loader as productsLoader, action as updateAvailabilityAction } from './pages/Products'
 import NewProduct, { action as newProductAction } from './pages/NewProduct'
 import EditProduct, { loader as editProductLoader, action as editProductAction } from './pages/EditProduct'
 import { action as deleteProductAction } from './components/ProductDetails'
+import Spinner from './components/Spinner'
+const Products = lazy(async () => await import('./pages/Products'))
+const Layout = lazy(async () => await import('./layouts/Layout'))
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout/>,
+    element: <Suspense fallback={<Spinner/>}><Layout/></Suspense>,
     children: [
       {
         index: true,
-        element: <Products/>,
+        element: <Suspense fallback={<Spinner/>}><Products/></Suspense>,
         loader: productsLoader,
         action: updateAvailabilityAction
       },
