@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
+import Layout from './layouts/Layout'
 import { loader as productsLoader, action as updateAvailabilityAction } from './pages/Products'
 import { action as newProductAction } from './pages/NewProduct'
 import { loader as editProductLoader, action as editProductAction } from './pages/EditProduct'
@@ -11,7 +12,7 @@ const Products = lazy(async () => {
 })
 const NewProduct = lazy(async () => await import('./pages/NewProduct'))
 const EditProduct = lazy(async () => await import('./pages/EditProduct'))
-const Layout = lazy(async () => await import('./layouts/Layout'))
+
 export const router = createBrowserRouter([
   {
     path: '/',
