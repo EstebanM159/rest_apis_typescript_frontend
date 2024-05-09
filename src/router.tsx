@@ -6,7 +6,7 @@ import { loader as editProductLoader, action as editProductAction } from './page
 import { action as deleteProductAction } from './components/ProductDetails'
 import Spinner from './components/Spinner'
 const Layout = lazy(async () => {
-  await new Promise(resolve => setTimeout(resolve, 600)) // 1000ms de retraso
+  await new Promise(resolve => setTimeout(resolve, 700)) // 1000ms de retraso
   return import('./layouts/Layout')
 })
 const Products = lazy(async () => await import('./pages/Products'))
